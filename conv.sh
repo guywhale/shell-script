@@ -77,14 +77,14 @@ if [ ! -e "$experiment_number/dev/variation-1.scss" ]; then
 EOF
 fi
 
-
 # Check if the `sass` executable is in the npm global bin directory
 if command -v sass &> /dev/null; then
-  echo "Sass already installed globally via npm."
+  echo "\n[CONV] "$company_code $experiment_number" -> Ready\n"
 else
-  echo "[CONV] Installing Sass globally via npm..."
+  echo "[CONV] "$company_code $experiment_number" -> Installing Sass globally via npm..."
   npm install -g sass
-  echo "\n[CONV]...Sass successfully installed\n"
+  echo "\n[CONV] "$company_code $experiment_number" -> ...Sass successfully installed\n"
+  echo "\n[CONV] "$company_code $experiment_number" -> Ready\n"
 fi
 
 cd $experiment_number/dev
