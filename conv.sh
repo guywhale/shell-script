@@ -65,36 +65,6 @@ if [ ! -e "$experiment_number/variation-1.js" ]; then
 EOF
 fi
 
-# Create and populate .gitignore
-if [ ! -e "$experiment_number/dev/.gitignore" ]; then
-  touch $experiment_number/dev/.gitignore
-  cat <<EOF > "$experiment_number/dev/.gitignore"
-node_modules/
-package-lock.json
-EOF
-fi
-
-# Create and populate package.json
-if [ ! -e "$experiment_number/dev/package.json" ]; then
-  touch $experiment_number/dev/package.json
-  cat <<EOF > $experiment_number/dev/package.json
-{
-  "name": "cv-$lowercase_company_code-$hypenated_experiment_number",
-  "version": "1.0.0",
-  "description": "$company_code $experiment_number",
-  "main": "../variation-1.js",
-  "scripts": {
-    "dev": "sass --watch --no-source-map variation-1.scss ../variation-1.css"
-  },
-  "author": "Guy Whale",
-  "license": "ISC",
-  "dependencies": {
-    "sass": "^1.69.5"
-  }
-}
-EOF
-fi
-
 # Create and populate /dev/variation-1.scss
 if [ ! -e "$experiment_number/dev/variation-1.scss" ]; then
   touch $experiment_number/dev/variation-1.scss
@@ -107,10 +77,17 @@ if [ ! -e "$experiment_number/dev/variation-1.scss" ]; then
 EOF
 fi
 
+
+# Check if the `sass` executable is in the npm global bin directory
+if command -v sass &> /dev/null; then
+  echo "Sass already installed globally via npm."
+else
+  echo "[CONV] Installing Sass globally via npm..."
+  npm install -g sass
+  echo "\n[CONV]...Sass successfully installed\n"
+fi
+
 cd $experiment_number/dev
 
-# Install node packages
-npm install
-
 # Run SASS compiler
-npm run dev
+sass --watch --no-source-map variation-1.scss ../variation-1.css
