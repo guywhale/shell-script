@@ -9,21 +9,22 @@ experiment_number_hyphenated="${experiment_number//\./-}"
 replace_placeholders="s/<<<CLIENT_CODE>>>/$client_code/g; s/<<<CLIENT_CODE_LOWERCASE>>>/$client_code_lowercase/g; s/<<<EXPERIMENT_NUMBER>>>/$experiment_number/g; s/<<<EXPERIMENT_NUMBER_HYPHENATED>>>/$experiment_number_hyphenated/g"
 
 # Locations of default templates
-js_template="./templates/default/JS.js"
-sass_template="./templates/default/SASS.scss"
-tm_template="./templates/default/TM.js"
+templates_path="$HOME/bin/templates"
+js_template="$templates_path/default/JS.js"
+sass_template="$templates_path/default/SASS.scss"
+tm_template="$templates_path/default/TM.js"
 
 # Swap for client specific templates if they exist
-if [ -e "./templates/$client_code/JS.js" ]; then
-  js_template="./templates/$client_code/JS.js"
+if [ -e "$templates_path/$client_code/JS.js" ]; then
+  js_template="$templates_path/$client_code/JS.js"
 fi
 
-if [ -e "./templates/$client_code/SASS.scss" ]; then
-  sass_template="./templates/$client_code/SASS.scss"
+if [ -e "$templates_path/$client_code/SASS.scss" ]; then
+  sass_template="$templates_path/$client_code/SASS.scss"
 fi
 
-if [ -e "./templates/$client_code/TM.js" ]; then
-  tm_template="./templates/$client_code/TM.js"
+if [ -e "$templates_path/$client_code/TM.js" ]; then
+  tm_template="$templates_path/$client_code/TM.js"
 fi
 
 # If directories don't exist, make them
