@@ -46,10 +46,8 @@ fi
 if command -v sass &> /dev/null; then
   echo "\n[CONV] "$client_code $experiment_number" -> Ready\n"
 else
-  echo "[CONV] "$client_code $experiment_number" -> Installing Sass globally via npm..."
+  echo "[CONV] "$client_code $experiment_number" -> Installing Sass globally via NPM..."
   npm install -g sass
-  echo "\n[CONV] "$client_code $experiment_number" -> ...Sass successfully installed\n"
-  echo "\n[CONV] "$client_code $experiment_number" -> Ready\n"
 fi
 
 cd $experiment_number/dev
