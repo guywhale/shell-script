@@ -4,11 +4,27 @@ client_code="$1"
 client_code_lowercase=$(echo "$client_code" | tr '[:upper:]' '[:lower:]')
 experiment_number="$2"
 experiment_number_hyphenated="${experiment_number//\./-}"
+
+# Parameter string for replacing placeholders in templates with variables
 replace_placeholders="s/<<<CLIENT_CODE>>>/$client_code/g; s/<<<CLIENT_CODE_LOWERCASE>>>/$client_code_lowercase/g; s/<<<EXPERIMENT_NUMBER>>>/$experiment_number/g; s/<<<EXPERIMENT_NUMBER_HYPHENATED>>>/$experiment_number_hyphenated/g"
+
+# Locations of default templates
 js_template="./templates/default/JS.js"
 sass_template="./templates/default/SASS.scss"
 tm_template="./templates/default/TM.js"
 
+# Swap for client specific templates if they exist
+if [ -e "./templates/$client_code/JS.js" ]; then
+  js_template="./templates/$client_code/JS.js"
+fi
+
+if [ -e "./templates/$client_code/SASS.scss" ]; then
+  sass_template="./templates/$client_code/SASS.scss"
+fi
+
+if [ -e "./templates/$client_code/TM.js" ]; then
+  tm_template="./templates/$client_code/TM.js"
+fi
 
 # If directories don't exist, make them
 if [ ! -d "./$experiment_number" ]; then
@@ -42,7 +58,7 @@ if [ ! -e "$experiment_number/dev/tampermonkey.js" ]; then
   cat "$tm_template" | sed "$replace_placeholders" >> $experiment_number/dev/tampermonkey.js 
 fi
 
-# Check if the `sass` executable is in the npm global bin directory
+# Check if sass CLI is installed globally and install if not
 if command -v sass &> /dev/null; then
   echo "\n[CONV] "$client_code $experiment_number" -> Ready\n"
 else
