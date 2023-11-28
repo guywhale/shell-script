@@ -6,8 +6,12 @@ company_code="$1"
 lowercase_company_code=$(echo "$company_code" | tr '[:upper:]' '[:lower:]')
 
 # If directories don't exist, make them
-if [ ! -d "./$experiment_number/dev" ]; then
-  mkdir $experiment_number $experiment_number/dev
+if [ ! -d "./$experiment_number" ]; then
+  mkdir $experiment_number
+
+  if [ ! -d "./$experiment_number/dev" ]; then
+    mkdir $experiment_number/dev
+  fi
 fi
 
 # Create and populate variation-1.css
