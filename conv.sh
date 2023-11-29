@@ -77,16 +77,15 @@ conv_id="\n[CONV] $client_code $experiment_number ->"
 if command -v sass &> /dev/null; then
   echo "$conv_id Ready\n"
 else
-  echo "$conv_id Installing SASS globally via NPM..."
+  echo "$conv_id Installing SASS globally via NPM...\n"
   npm install -g sass
   sleep 1
 
   if command -v sass &> /dev/null; then
     echo "$conv_id SASS successfully installed.\n"
-    sleep 1
     echo "$conv_id Ready\n"
   else
-    echo "$conv_id SASS installation failed. Please install SASS globally. Exiting\n"
+    echo "$conv_id SASS installation failed. Please install SASS globally. Exiting...\n"
     exit 1
   fi
 fi
