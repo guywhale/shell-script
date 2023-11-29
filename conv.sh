@@ -92,5 +92,4 @@ else
 fi
 
 # Run SASS compiler
-# cd $experiment_number/dev
 sass --watch --no-source-map ./$sass_path/variation-1.scss ./$experiment_number/variation-1.css
