@@ -6,7 +6,7 @@ experiment_number="$2"
 experiment_number_hyphenated="${experiment_number//\./-}"
 
 # Locations of default templates
-templates_path="$HOME/bin/templates"
+templates_path="$HOME/bin/conv/templates"
 js_template="$templates_path/default/JS.js"
 sass_template="$templates_path/default/SASS.scss"
 tm_template="$templates_path/default/TM.js"
