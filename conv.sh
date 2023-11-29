@@ -1,6 +1,6 @@
 #!/bin/sh
 # Variables
-client_code="$1"
+client_code=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 client_code_lowercase=$(echo "$client_code" | tr '[:upper:]' '[:lower:]')
 experiment_number="$2"
 experiment_number_hyphenated="${experiment_number//\./-}"
