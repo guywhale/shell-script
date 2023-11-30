@@ -24,7 +24,7 @@
 4. Once you have saved and exited the file, you will need to quit and restart your terminal in order for `conv` to start working.
 
 ## How to use
-In the terminal, navigate to the client folder you where you want to create an experiment.
+In the terminal, navigate to the client folder where you want to create an experiment.
 
 Then type:
 
