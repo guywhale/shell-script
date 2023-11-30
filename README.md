@@ -1,6 +1,6 @@
 ## Requirements
 - Mac only at the moment (probably works on Linux but haven't tested)
-- Node JS
+- Node JS installed
 
 ## Installation
 1. Open a terminal and create a folder called bin/ in your home directory.
@@ -16,8 +16,8 @@
 3. Next add `conv` to your `$PATH` in order to use it as a shell command in the terminal. To do this open the `~/.zshrc` shell config file using your editor of choice. Then copy and paste the following at the bottom of the file.
 
     ```
-    # Set up Conversion shell script export
-    PATH=$PATH:~/bin/conv
+    # Set up Conversion shell script
+    export PATH=$PATH:~/bin/conv
     ```
 4. Once you have saved and exited the file, you will need to quit and restart your terminal in order for `conv` to start working.
 
