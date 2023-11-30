@@ -11,6 +11,6 @@
     
     `cd ~/bin`
     
-    `git clone https://github.com/guywhale/shell-script.git`
+    `git clone https://github.com/guywhale/conv.git`
 
 3. 
