@@ -7,13 +7,13 @@ experiment_number_hyphenated="${experiment_number//\./-}"
 
 # Locations of default templates
 templates_path="$HOME/bin/conv/templates"
-js_template="$templates_path/default/JS.js"
+js_template="$templates_path/default/V1.js"
 sass_template="$templates_path/default/SASS.scss"
 tm_template="$templates_path/default/TM.js"
 
 # Swap for client specific templates if they exist
-if [ -e "$templates_path/$client_code/JS.js" ]; then
-  js_template="$templates_path/$client_code/JS.js"
+if [ -e "$templates_path/$client_code/V1.js" ]; then
+  js_template="$templates_path/$client_code/V1.js"
 fi
 
 if [ -e "$templates_path/$client_code/SASS.scss" ]; then
