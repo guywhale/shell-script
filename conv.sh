@@ -9,7 +9,7 @@ experiment_number_hyphenated="${experiment_number//\./-}"
 templates_path="$HOME/bin/conv/templates"
 js_template="$templates_path/default/V1.js"
 sass_template="$templates_path/default/V1.scss"
-tm_template="$templates_path/default/TM.js"
+tm_template="$templates_path/default/TM-V1.js"
 
 # Swap for client specific templates if they exist
 if [ -e "$templates_path/$client_code/V1.js" ]; then
@@ -20,8 +20,8 @@ if [ -e "$templates_path/$client_code/V1.scss" ]; then
   sass_template="$templates_path/$client_code/V1.scss"
 fi
 
-if [ -e "$templates_path/$client_code/TM.js" ]; then
-  tm_template="$templates_path/$client_code/TM.js"
+if [ -e "$templates_path/$client_code/TM-V1.js" ]; then
+  tm_template="$templates_path/$client_code/TM-V1.js"
 fi
 
 # If directories don't exist, make them

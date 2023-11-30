@@ -59,7 +59,7 @@ There are currently three available:
 
 2) `V1.js` - the template for you `variation-1.js` file.
 
-3) `TM.js` the template for your Tamper Monkey config file.
+3) `TM-V1.js` the template for your Tamper Monkey config file.
 
 You can customize these templates to fit your needs. There a four placeholders available to pass the client code and experiment number into the template file.
 1) `<<<CLIENT_CODE>>>` - the client code in uppercase e.g. `WTR`
