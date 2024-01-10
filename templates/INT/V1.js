@@ -1,7 +1,7 @@
 ((w) => {
     const tag =
-        "cv-int-189";
-    const exp = "INT 189";
+        "cv-<<<CLIENT_CODE_LOWERCASE>>>-<<<EXPERIMENT_NUMBER_HYPHENATED>>>";
+    const exp = "<<<CLIENT_CODE>>> <<<EXPERIMENT_NUMBER>>>";
     const qa = true;
     //const qa = document.cookie.indexOf('cfQA') > -1;
     const window = typeof unsafeWindow !== "undefined" ? unsafeWindow : w;
@@ -38,6 +38,33 @@
 
                 requestAnimationFrame(check);
             });
+        },
+        setMatomoCD: function (expName, varName, customDimension) {
+            utils
+                .waitUntil(
+                    () =>
+                        typeof window._paq !== "undefined" &&
+                        typeof window._paq.push !== "undefined",
+                    0
+                )
+                .then((matomoReady) => {
+                    window._paq.push([
+                        "setCustomVariable",
+                        customDimension,
+                        expName,
+                        varName,
+                        "visit",
+                    ]);
+                    window._paq.push(["trackEvent", expName, varName]);
+                    log(
+                        expName,
+                        varName,
+                        `, Custom dimension: ${customDimension}`
+                    );
+                })
+                .catch((err) => {
+                    logErr(err);
+                });
         },
     };
 
