@@ -6,6 +6,7 @@
     const window = typeof unsafeWindow !== "undefined" ? unsafeWindow : w;
     const log = qa ? Function.prototype.bind.call(console.log, console, `[CONV] ${exp} |`) : () => {};
     const logErr = qa ? Function.prototype.bind.call(console.error, console, `[CONV] ${exp} Error |`) : () => {};
+    const imgPath = "https://d1mgcpums0qvsa.cloudfront.net/<<<CLIENT_CODE>>>/<<<EXPERIMENT_NUMBER>>>/";
 
     const utils = {
         waitUntil: (condition, wait = 5000) => {
