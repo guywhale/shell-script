@@ -2,6 +2,7 @@
  * ************ YOU CAN'T USE TEMPLATE LITERALS FOR ADOBE TARGET ***************
  */
 ((w) => {
+    "use strict";
     const tag = "cv-<<<CLIENT_CODE_LOWERCASE>>>-<<<EXPERIMENT_NUMBER_HYPHENATED>>>";
     const exp = "<<<CLIENT_CODE>>> <<<EXPERIMENT_NUMBER>>>";
     const qa = true;
