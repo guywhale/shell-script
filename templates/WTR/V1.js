@@ -36,7 +36,7 @@
         },
         trackEvent: (eventName) => {
             utils
-                .waitUntil(() => window.WT, 0)
+                .waitUntil(() => window.WT)
                 .then((wtReady) => {
                     window.WT.click({
                         testAlias: testAlias,
@@ -44,16 +44,6 @@
                     });
 
                     log("WT event sent: ", eventName);
-                })
-                .catch((err) => {
-                    logErr(err);
-                });
-
-            utils
-                .waitUntil(() => typeof window.gtag === "function", 0)
-                .then((gtagReady) => {
-                    window.gtag("event", eventName);
-                    log("GA4 event sent: ", eventName);
                 })
                 .catch((err) => {
                     logErr(err);
