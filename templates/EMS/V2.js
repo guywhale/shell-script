@@ -5,7 +5,7 @@
     let utils;
 
     window[tag] = {
-        variant: "Variation 1",
+        variant: "Variation 2",
         init: function () {
             utils = window[tag + "-shared"];
             utils.log(this.variant);

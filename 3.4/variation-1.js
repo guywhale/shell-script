@@ -1,6 +1,6 @@
 ((w) => {
     "use strict";
-    const tag = "cv-<<<CLIENT_CODE_LOWERCASE>>>-<<<EXPERIMENT_NUMBER_HYPHENATED>>>";
+    const tag = "cv-ems-3-4";
     const window = typeof unsafeWindow !== "undefined" ? unsafeWindow : w;
     let utils;
 
