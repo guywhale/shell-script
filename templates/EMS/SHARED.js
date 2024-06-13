@@ -59,17 +59,20 @@
             }
         },
         watchDataLayer: function (callback) {
-            if (typeof window.dataLayer === "undefined" || window.dataLayer.push === "undefined") {
-                this.logErr("dataLayer is not defined");
-                return;
-            }
+            this.waitUntil(
+                () => typeof window.dataLayer !== "undefined" && typeof window.dataLayer.push !== "undefined"
+            )
+                .then(() => {
+                    const originalPush = window.dataLayer.push;
 
-            const originalPush = window.dataLayer.push;
-
-            window.dataLayer.push = function (...args) {
-                originalPush.apply(this, args);
-                callback(args[0]);
-            };
+                    window.dataLayer.push = function (...args) {
+                        originalPush.apply(this, args);
+                        callback(args[0]);
+                    };
+                })
+                .catch((err) => {
+                    this.logErr(err);
+                });
         },
     };
 
