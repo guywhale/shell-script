@@ -4,14 +4,14 @@
     const exp = "<<<CLIENT_CODE>>> <<<EXPERIMENT_NUMBER>>>";
     const qa = true;
     //const qa = document.cookie.indexOf('cfQA') > -1;
+    const log = qa ? Function.prototype.bind.call(console.log, console, `[CONV] ${exp} |`) : () => {};
+    const logErr = qa ? Function.prototype.bind.call(console.error, console, `[CONV] ${exp} Error |`) : () => {};
     const window = typeof unsafeWindow !== "undefined" ? unsafeWindow : w;
     const campaignId = 9999999; // Replace with the correct campaign ID
 
     if (window[tag + "-shared"]) return;
 
     window[tag + "-shared"] = {
-        log: qa ? Function.prototype.bind.call(console.log, console, `[CONV] ${exp} |`) : () => {},
-        logErr: qa ? Function.prototype.bind.call(console.error, console, `[CONV] ${exp} Error |`) : () => {},
         imgPath: "https://d1mgcpums0qvsa.cloudfront.net/<<<CLIENT_CODE>>>/<<<EXPERIMENT_NUMBER>>>/",
         waitUntil: function (condition, wait = 5000) {
             return new Promise((resolve, reject) => {
@@ -38,9 +38,9 @@
         trackEvent: function (eventName) {
             try {
                 window.ABTastyClickTracking(`[CONV] [${exp}] ${eventName}`, null, campaignId);
-                this.log(eventName);
+                log(eventName);
             } catch (err) {
-                this.logErr(err);
+                logErr(err);
             }
         },
         segmentUser: function (segmentName, segmentVal) {
@@ -53,9 +53,9 @@
                     s: obj,
                 });
 
-                this.log(segmentName);
+                log(segmentName);
             } catch (err) {
-                this.logErr(err);
+                logErr(err);
             }
         },
         watchDataLayer: function (callback) {
@@ -71,7 +71,7 @@
                     };
                 })
                 .catch((err) => {
-                    this.logErr(err);
+                    logErr(err);
                 });
         },
     };
