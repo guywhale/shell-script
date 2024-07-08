@@ -10,7 +10,7 @@
     let utils;
 
     window[tag] = {
-        variant: "Variation 2",
+        variant: "Variation-2",
         init: function () {
             utils = window[tag + "-shared"];
             log(this.variant);
