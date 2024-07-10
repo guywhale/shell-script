@@ -25,7 +25,7 @@ if [ -e "$templates_path/$client_code/TM-V1.js" ]; then
 fi
 
 # If client code equals "EMS", add templates for shared, control and variation 2
-if [ "$client_code" = "EMS" ]; then
+if [ "$client_code" = "EMS" ] || [ "$client_code" = "INT" ]; then
     shared_js_template="$templates_path/default/SHARED.js"
     control_js_template="$templates_path/default/CONTROL.js"
     control_tm_template="$templates_path/default/TM-CONTROL.js"
@@ -106,7 +106,7 @@ if [ ! -e "$experiment_number/dev/tm/tm-variation-1.js" ]; then
 fi
 
 # If client code equals "EMS", create and populate shared.js, control.js, variation-2.js, variation-2.scss, variation-2.css and tm-variation-2.js
-if [ "$client_code" = "EMS" ]; then
+if [ "$client_code" = "EMS" ] || [ "$client_code" = "INT" ]; then
     # Create and populate variation-1.css
     if [ ! -e "$experiment_number/variation-2.css" ]; then
         touch $experiment_number/variation-2.css
