@@ -24,7 +24,7 @@ if [ -e "$templates_path/$client_code/TM-V1.js" ]; then
     v1_tm_template="$templates_path/$client_code/TM-V1.js"
 fi
 
-# If client code equals "EMS", add templates for shared, control and variation 2
+# If client code equals "EMS" or "INT", add templates for shared, control and variation 2
 if [ "$client_code" = "EMS" ] || [ "$client_code" = "INT" ]; then
     shared_js_template="$templates_path/default/SHARED.js"
     control_js_template="$templates_path/default/CONTROL.js"
@@ -55,6 +55,15 @@ if [ "$client_code" = "EMS" ] || [ "$client_code" = "INT" ]; then
 
     if [ -e "$templates_path/$client_code/TM-V2.js" ]; then
         v2_tm_template="$templates_path/$client_code/TM-V2.js"
+    fi
+fi
+
+# If client code equals "INT", add template for shared.scss
+if [ "$client_code" = "INT" ]; then
+    shared_sass_template="$templates_path/default/shared.scss"
+
+    if [ -e "$templates_path/$client_code/shared.scss" ]; then
+        shared_sass_template="$templates_path/$client_code/shared.scss"
     fi
 fi
 
@@ -105,7 +114,8 @@ if [ ! -e "$experiment_number/dev/tm/tm-variation-1.js" ]; then
     cat "$v1_tm_template" | sed "$replace_placeholders" >> $experiment_number/dev/tm/tm-variation-1.js 
 fi
 
-# If client code equals "EMS", create and populate shared.js, control.js, variation-2.js, variation-2.scss, variation-2.css and tm-variation-2.js
+# If client code equals "EMS" or "INT", create and populate shared.js, control.js, 
+# variation-2.js, variation-2.scss, variation-2.css and tm-variation-2.js
 if [ "$client_code" = "EMS" ] || [ "$client_code" = "INT" ]; then
     # Create and populate variation-1.css
     if [ ! -e "$experiment_number/variation-2.css" ]; then
@@ -146,6 +156,14 @@ if [ "$client_code" = "EMS" ] || [ "$client_code" = "INT" ]; then
     if [ ! -e "$experiment_number/dev/tm/tm-variation-2.js" ]; then
         touch $experiment_number/dev/tm/tm-variation-2.js
         cat "$v2_tm_template" | sed "$replace_placeholders" >> $experiment_number/dev/tm/tm-variation-2.js
+    fi
+fi
+
+# If client code equals "INT", create and populate shared.scss
+if [ "$client_code" = "INT" ]; then
+    if [ ! -e "$experiment_number/dev/scss/shared.scss" ]; then
+        touch $experiment_number/dev/scss/shared.scss
+        cat "$shared_sass_template" | sed "$replace_placeholders" >> $experiment_number/dev/scss/shared.scss
     fi
 fi
 
