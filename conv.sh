@@ -161,6 +161,12 @@ fi
 
 # If client code equals "INT", create and populate shared.scss
 if [ "$client_code" = "INT" ]; then
+    # Create and populate shared.css
+    if [ ! -e "$experiment_number/shared.css" ]; then
+        touch $experiment_number/shared.css
+    fi
+
+    # Create and populate /dev/scss/shared.scss
     if [ ! -e "$experiment_number/dev/scss/shared.scss" ]; then
         touch $experiment_number/dev/scss/shared.scss
         cat "$shared_sass_template" | sed "$replace_placeholders" >> $experiment_number/dev/scss/shared.scss
