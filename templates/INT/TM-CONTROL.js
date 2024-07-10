@@ -2,6 +2,7 @@
 // @name         <<<CLIENT_CODE>>> <<<EXPERIMENT_NUMBER>>> - Control
 // @author       Guy Whale
 // @match        https://*/*
+// @resource     cssFile file:///Users/guywhale/repos/experiments/<<<CLIENT_CODE>>>/<<<EXPERIMENT_NUMBER>>>/shared.css
 // @require      file:///Users/guywhale/repos/experiments/<<<CLIENT_CODE>>>/<<<EXPERIMENT_NUMBER>>>/shared.js
 // @require      file:///Users/guywhale/repos/experiments/<<<CLIENT_CODE>>>/<<<EXPERIMENT_NUMBER>>>/control.js
 // @grant        GM_addStyle
