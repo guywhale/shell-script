@@ -8,8 +8,6 @@
     const logErr = qa ? Function.prototype.bind.call(console.error, console, `[CONV] ${exp} Error |`) : () => {};
     const window = typeof unsafeWindow !== "undefined" ? unsafeWindow : w;
 
-    if (window[tag + "-shared"]) return;
-
     window[tag + "-shared"] = {
         imgPath: "https://d1mgcpums0qvsa.cloudfront.net/<<<CLIENT_CODE>>>/<<<EXPERIMENT_NUMBER>>>/",
         waitUntil: function (condition, wait = 5000) {
