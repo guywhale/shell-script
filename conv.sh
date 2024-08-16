@@ -102,6 +102,11 @@ if [ ! -e "$experiment_number/variation-1.js" ]; then
     cat "$v1_js_template" | sed "$replace_placeholders" >> $experiment_number/variation-1.js 
 fi
 
+# If client is HIP, rename variation-1.js to post-rendering.js
+if [ "$client_code" = "HIP" ]; then
+    mv $experiment_number/variation-1.js $experiment_number/post-rendering.js
+fi
+
 # Create and populate /dev/scss/variation-1.scss
 if [ ! -e "$experiment_number/dev/scss/variation-1.scss" ]; then
     touch $experiment_number/dev/scss/variation-1.scss
@@ -112,6 +117,11 @@ fi
 if [ ! -e "$experiment_number/dev/tm/tm-variation-1.js" ]; then
     touch $experiment_number/dev/tm/tm-variation-1.js
     cat "$v1_tm_template" | sed "$replace_placeholders" >> $experiment_number/dev/tm/tm-variation-1.js 
+fi
+
+if [ "$client_code" = "HIP" ]; then
+    # Remove /dev/tm/ directory if client is HIP
+    rm -rf $experiment_number/dev/tm
 fi
 
 # If client code equals "EMS" or "INT", create and populate shared.js, control.js, 
